@@ -23,6 +23,7 @@ class RegisteredUserController extends Controller
     {
         $imagePath = 'public/images/logo_nvidia_reconv.png';
         $logoApp = Storage::url($imagePath);
+
         return Inertia::render('Auth/Register', ['image_url' => asset($logoApp)]);
     }
 
