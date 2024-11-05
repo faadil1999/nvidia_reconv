@@ -3,7 +3,7 @@
         <!-- Table header -->
         <thead>
             <tr
-                class="border-b-2 text-zinc-800/50 text-left font-semibold text-xs"
+                class="border-b-2 text-zinc-800/50 dark:text-theme-secondary-light text-left font-semibold text-xs"
             >
                 <slot name="header"></slot>
             </tr>

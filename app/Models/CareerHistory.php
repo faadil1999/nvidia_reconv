@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class CareerHistory extends Model
@@ -13,8 +14,10 @@ class CareerHistory extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'description',
+        'user_id',
+        'career_id',
+        'start_date',
+        'end_date'
     ];
 
 
@@ -28,5 +31,15 @@ class CareerHistory extends Model
     public function skills(): BelongsToMany
     {
         return $this->belongsToMany(Skill::class);
+    }
+
+    /**
+     * For getting model career
+     *
+     * @return BelongsTo
+     */
+    public function career(): BelongsTo
+    {
+        return $this->belongsTo(Career::class);
     }
 }
