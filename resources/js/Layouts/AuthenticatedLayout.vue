@@ -1,12 +1,13 @@
 <script setup>
 import { ref } from "vue";
+import { Link } from "@inertiajs/vue3";
+import { useDark, useToggle } from "@vueuse/core";
+import { SunIcon, MoonIcon } from "lucide-vue-next";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
-
 const showingNavigationDropdown = ref(false);
 const props = defineProps({
     image_url: {
@@ -14,6 +15,9 @@ const props = defineProps({
         default: "",
     },
 });
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 </script>
 
 <template>
@@ -94,6 +98,10 @@ const props = defineProps({
                                     </template>
                                 </Dropdown>
                             </div>
+                            <!-- Dark mode button -->
+                            <button @click="toggleDark()">
+                                <component :is="isDark ? MoonIcon : SunIcon" />
+                            </button>
                         </div>
 
                         <!-- Hamburger -->
