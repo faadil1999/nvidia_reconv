@@ -1,5 +1,5 @@
 <template>
-    <img :src="image_url" :class="size" />
+    <img :src="image_url" class="w-36 h-36" />
 </template>
 
 <script setup>
@@ -7,10 +7,6 @@ const props = defineProps({
     image_url: {
         type: String,
         default: "",
-    },
-    size: {
-        type: String,
-        default: "w-40 h-44",
     },
 });
 </script>

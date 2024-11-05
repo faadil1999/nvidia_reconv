@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import { Head } from "@inertiajs/vue3";
 
 const props = defineProps({
@@ -13,25 +14,17 @@ const props = defineProps({
 <template>
     <Head title="Dashboard" />
 
-    <AuthenticatedLayout :image_url="image_url">
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200"
-            >
-                Dashboard
-            </h2>
-        </template>
-
+    <DashboardLayout :image_url="image_url">
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div
-                    class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800"
+                    class="overflow-hidden bg-theme_bg-light shadow-sm sm:rounded-lg dark:bg-theme_bg-dark"
                 >
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You're logged in!
+                        You're logged in!sds
                     </div>
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </DashboardLayout>
 </template>
