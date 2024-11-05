@@ -28,7 +28,8 @@ const sidebarOpen = ref(false);
 const props = defineProps({
     image_url: {
         type: String,
-        default: "",
+        default:
+            "http://nvidia_reconv.test/storage/images/logo_nvidia_reconv.png",
     },
 });
 </script>

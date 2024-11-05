@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CareerPath extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'career_id',
+    ];
 }
