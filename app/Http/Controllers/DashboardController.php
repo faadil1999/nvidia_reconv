@@ -19,27 +19,4 @@ class DashboardController extends Controller
 
         return Inertia::render('Dashboard', ['image_url' => asset($logoApp)]);
     }
-
-    /**
-     * Function for storing career history
-     *
-     * @return Response
-     */
-    public function storeCareerHistory(CareerHistoryFormRequest $request)
-    {
-        $validated = $request->validated();
-
-        return redirect()->back()->wits('success', "");
-    }
-
-    /**
-     * Function for updating career history
-     *
-     * @param CareerHistoryFromRequest $request
-     * @return Response
-     */
-    public function updateCareerHistory(CareerHistoryFormRequest $request)
-    {
-        $validate = $request->validated();
-    }
 }

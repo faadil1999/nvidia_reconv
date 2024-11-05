@@ -1,7 +1,6 @@
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, router } from "@inertiajs/vue3";
 
 const props = defineProps({
     image_url: {
@@ -15,15 +14,27 @@ const props = defineProps({
     <Head title="Dashboard" />
 
     <DashboardLayout :image_url="image_url">
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div
-                    class="overflow-hidden bg-theme_bg-light shadow-sm sm:rounded-lg dark:bg-theme_bg-dark"
-                >
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You're logged in!sds
-                    </div>
-                </div>
+        <div class="p-12 grid grid-cols-3 gap-x-4 h-1/2">
+            <!--Career history-->
+            <div
+                class="col-span-1 w-full bg-yellow-300 rounded-lg hover:animate-bounce hover:cursor-pointer"
+            >
+                <button
+                    class="w-full h-full"
+                    @click="router.get(route('career.histories.index'))"
+                ></button>
+            </div>
+            <!--Career path selected-->
+            <div
+                class="col-span-1 w-full bg-green-300 rounded-lg hover:animate-bounce hover:cursor-pointer"
+            >
+                <button></button>
+            </div>
+            <!--Generate career and needed skills according to career history-->
+            <div
+                class="col-span-1 w-full bg-blue-300 rounded-lg hover:animate-bounce hover:cursor-pointer"
+            >
+                <button></button>
             </div>
         </div>
     </DashboardLayout>

@@ -46,4 +46,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    /*************************Relationship*********************** */
+
+    /**
+     * Function for retriving all career histories of user
+     *
+     * @return HasMany
+     */
+    public function careerHistories()
+    {
+        return $this->hasMany(CareerHistory::class);
+    }
 }
