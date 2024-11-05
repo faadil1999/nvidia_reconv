@@ -13,6 +13,18 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                theme: {
+                    primary: {
+                        dark: "#1f2937",
+                        light: "#FFFFFF",
+                    },
+                    secondary: {
+                        dark: "#171821",
+                        light: "#F7FAFC",
+                    },
+                },
+            },
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },

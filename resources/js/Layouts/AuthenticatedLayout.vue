@@ -35,7 +35,7 @@ const toggleDark = useToggle(isDark);
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
                                         :image_url="image_url"
-                                        size="w-14 h-14"
+                                        size="w-14 h-16"
                                         class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"
                                     />
                                 </Link>
