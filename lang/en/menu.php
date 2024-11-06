@@ -2,7 +2,7 @@
 
 return [
     'career_histories' => 'Career histories',
-    'reconversion_career' => 'reconversion career',
+    'reconversion_career' => 'Reconversion career',
     'generate' => 'Generate',
 
 ];

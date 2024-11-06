@@ -1,7 +1,8 @@
 <script setup>
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import BigButton from "@/Components/Dashboard/BigButton.vue";
 import { Head, router } from "@inertiajs/vue3";
-import { SettingsIcon } from "lucide-vue-next";
+import { DramaIcon, InboxIcon, SettingsIcon } from "lucide-vue-next";
 import { ref } from "vue";
 
 const props = defineProps({
@@ -25,24 +26,24 @@ function desactivateSpinAnimation() {
     <DashboardLayout :image_url="image_url">
         <div class="p-12 grid grid-cols-3 gap-x-4 h-1/2">
             <!--Career history-->
-            <div
-                class="col-span-1 w-full bg-yellow-300 rounded-lg hover:animate-bounce hover:cursor-pointer"
+            <BigButton
+                bg_color="bg-yellow-300"
+                @click="router.get(route('career.histories.index'))"
+                :label="$t('menu.career_histories')"
             >
-                <button
-                    class="w-full h-full"
-                    @click="router.get(route('career.histories.index'))"
-                >
-                    {{ $t("menu.career_histories") }}
-                </button>
-            </div>
+                <template #icon>
+                    <InboxIcon class="h-20 w-20" />
+                </template>
+            </BigButton>
             <!--Career path selected-->
-            <div
-                class="col-span-1 w-full bg-green-300 rounded-lg hover:animate-bounce hover:cursor-pointer"
+            <BigButton
+                bg_color="bg-green-300"
+                :label="$t('menu.reconversion_career')"
             >
-                <button class="w-full h-full">
-                    {{ $t("menu.reconversion_career") }}
-                </button>
-            </div>
+                <template #icon>
+                    <DramaIcon class="h-20 w-20" />
+                </template>
+            </BigButton>
 
             <!--Generate career and needed skills according to career history-->
             <div
