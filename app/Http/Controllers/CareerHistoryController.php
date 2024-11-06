@@ -66,7 +66,7 @@ class CareerHistoryController extends Controller
         $careerHistory = CareerHistory::create(Arr::except($validated, ['skills']));
         $careerHistory->skills()->sync($validated['skills']);
 
-        return redirect()->back()->wits('success', "Added successfuly");
+        return redirect()->route('career.histories.create')->wits('success', "Added successfuly");
     }
 
     /**
