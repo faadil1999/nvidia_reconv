@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Software Developer",
+        "description": "Designs, develops, and maintains software applications."
+    },
+    {
+        "name": "Data Scientist",
+        "description": "Analyzes and interprets complex data to help decision-making."
+    },
+    {
+        "name": "Digital Marketing Specialist",
+        "description": "Plans and executes online marketing strategies."
+    },
+    {
+        "name": "Graphic Designer",
+        "description": "Creates visual content to communicate messages."
+    },
+    {
+        "name": "Mechanical Engineer",
+        "description": "Designs and tests mechanical devices and systems."
+    },
+    {
+        "name": "Web Developer",
+        "description": "Builds and maintains websites and web applications."
+    },
+    {
+        "name": "Project Manager",
+        "description": "Oversees and coordinates projects from initiation to completion."
+    },
+    {
+        "name": "Financial Analyst",
+        "description": "Assesses financial data to guide business decisions."
+    },
+    {
+        "name": "Content Writer",
+        "description": "Produces engaging written content for various platforms."
+    },
+    {
+        "name": "UX/UI Designer",
+        "description": "Designs user-friendly interfaces and improves user experiences."
+    },
+    {
+        "name": "Cybersecurity Specialist",
+        "description": "Protects computer systems and networks from cyber threats."
+    },
+    {
+        "name": "Cloud Architect",
+        "description": "Designs and manages cloud computing systems and infrastructure."
+    },
+    {
+        "name": "Machine Learning Engineer",
+        "description": "Develops algorithms and models to enable machines to learn and make decisions."
+    },
+    {
+        "name": "SEO Specialist",
+        "description": "Optimizes websites to rank higher in search engine results."
+    },
+    {
+        "name": "Human Resources Manager",
+        "description": "Oversees recruitment, employee relations, and organizational development."
+    },
+    {
+        "name": "Financial Advisor",
+        "description": "Provides financial planning and investment advice to clients."
+    },
+    {
+        "name": "Supply Chain Manager",
+        "description": "Manages the production and distribution of goods within a supply chain."
+    },
+    {
+        "name": "Mobile App Developer",
+        "description": "Designs and develops mobile applications for smartphones and tablets."
+    },
+    {
+        "name": "Game Developer",
+        "description": "Creates and designs video games for various platforms."
+    },
+    {
+        "name": "Social Media Manager",
+        "description": "Develops and implements social media strategies to increase engagement and brand awareness."
+    },
+    {
+        "name": "Chef",
+        "description": "Plans, prepares, and cooks meals in a restaurant or other food service establishment."
+    },
+    {
+        "name": "Civil Engineer",
+        "description": "Designs and oversees the construction of infrastructure projects like roads, bridges, and buildings."
+    },
+    {
+        "name": "Teacher",
+        "description": "Educates and imparts knowledge to students in schools, colleges, or universities."
+    },
+    {
+        "name": "Nurse",
+        "description": "Provides healthcare and assistance to patients in hospitals, clinics, and other medical facilities."
+    },
+    {
+        "name": "Construction Worker",
+        "description": "Operates machinery and performs manual labor to build and maintain buildings and infrastructure."
+    },
+    {
+        "name": "Electrician",
+        "description": "Installs and repairs electrical systems in homes, businesses, and industrial settings."
+    },
+    {
+        "name": "Carpenter",
+        "description": "Builds, installs, and repairs structures made of wood and other materials."
+    },
+    {
+        "name": "Mechanic",
+        "description": "Repairs and maintains vehicles, machinery, and mechanical equipment."
+    },
+    {
+        "name": "Pharmacist",
+        "description": "Dispenses medication and provides advice on the use and effects of pharmaceuticals."
+    },
+    {
+        "name": "Librarian",
+        "description": "Manages library collections, assists with research, and provides information resources to the public."
+    },
+    {
+        "name": "Business Analyst",
+        "description": "Analyzes business processes to recommend solutions and improve efficiency."
+    },
+    {
+        "name": "Content Strategist",
+        "description": "Plans and coordinates content creation to support marketing and communication goals."
+    },
+    {
+        "name": "Product Manager",
+        "description": "Oversees the development and lifecycle of a product from inception to launch."
+    },
+    {
+        "name": "Event Planner",
+        "description": "Plans and organizes events, from corporate meetings to social gatherings."
+    },
+    {
+        "name": "Video Editor",
+        "description": "Edits and arranges video footage for movies, TV, advertisements, and online media."
+    },
+    {
+        "name": "Public Relations Specialist",
+        "description": "Manages the public image of a company or individual through media relations and events."
+    },
+    {
+        "name": "Legal Advisor",
+        "description": "Provides legal guidance and counsel to individuals or organizations."
+    },
+    {
+        "name": "Interior Designer",
+        "description": "Designs functional and aesthetically pleasing indoor spaces for homes and businesses."
+    },
+    {
+        "name": "Sales Manager",
+        "description": "Leads a team of salespeople, setting strategies to meet sales targets and objectives."
+    },
+    {
+        "name": "Healthcare Administrator",
+        "description": "Manages healthcare facilities and services, ensuring they meet legal and regulatory standards."
+    }
+]

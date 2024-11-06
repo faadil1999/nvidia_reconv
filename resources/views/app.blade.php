@@ -18,4 +18,9 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
+    <style>
+        @import '@vueform/multiselect/themes/tailwind.css';
+        /* or */
+        /* @import './path/to/node_modules/@vueform/multiselect/themes/tailwind.css'; */
+    </style>
 </html>
