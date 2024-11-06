@@ -6,6 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+/pythonNVIDIA_NIM/venv
 .env
 .env.backup
 .env.production
