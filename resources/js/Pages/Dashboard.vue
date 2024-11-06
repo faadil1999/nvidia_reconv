@@ -2,6 +2,7 @@
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import { Head, router } from "@inertiajs/vue3";
 import { SettingsIcon } from "lucide-vue-next";
+import { ref } from "vue";
 
 const props = defineProps({
     image_url: {
@@ -9,6 +10,13 @@ const props = defineProps({
         default: "",
     },
 });
+const spin_setting = ref(false);
+function activateSpinAnimation() {
+    spin_setting.value = true;
+}
+function desactivateSpinAnimation() {
+    spin_setting.value = false;
+}
 </script>
 
 <template>
@@ -35,13 +43,19 @@ const props = defineProps({
                     {{ $t("menu.reconversion_career") }}
                 </button>
             </div>
+
             <!--Generate career and needed skills according to career history-->
             <div
-                class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer"
+                class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer hover:bg-blue-500"
+                @mouseover="activateSpinAnimation"
+                @mouseleave="desactivateSpinAnimation"
             >
                 <div class="w-full h-full mx-auto">
                     <button class="items-center flex flex-row mx-auto h-full">
-                        <SettingsIcon class="hover:animate-spin h-20 w-20" />
+                        <SettingsIcon
+                            class="h-20 w-20"
+                            :class="spin_setting ? 'animate-spin' : ''"
+                        />
                         <span class="text-lg">
                             {{ $t("menu.generate") }}
                         </span>
