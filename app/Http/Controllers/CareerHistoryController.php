@@ -8,6 +8,7 @@ use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Models\CareerHistory;
 use App\Http\Requests\CareerHistoryFormRequest;
+use Illuminate\Support\Arr;
 
 class CareerHistoryController extends Controller
 {
@@ -48,8 +49,9 @@ class CareerHistoryController extends Controller
     {
         $careers = Career::all("id", "title");
         $skills = Skill::all("id", "name");
+        $careerHistories = CareerHistory::query()->with(['career', 'skills'])->get(['id', 'start_date', 'end_date', 'career_id']);
 
-        return Inertia::render('Career/History/Form', ['careers' => $careers, 'skills' => $skills]);
+        return Inertia::render('Career/History/Form', ['careers' => $careers, 'skills' => $skills, 'career_histories' => $careerHistories]);
     }
 
     /**
@@ -61,8 +63,10 @@ class CareerHistoryController extends Controller
     {
         $validated = $request->validated();
         $validated['user_id'] = auth()->id();
-        dd($validated);
-        return redirect()->back()->wits('success', "");
+        $careerHistory = CareerHistory::create(Arr::except($validated, ['skills']));
+        $careerHistory->skills()->sync($validated['skills']);
+
+        return redirect()->back()->wits('success', "Added successfuly");
     }
 
     /**
