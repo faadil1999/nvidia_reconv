@@ -12,6 +12,7 @@
         >
             <Header />
             <main class="min-h-screen bg-theme-primary-light dark:bg-gray-800">
+                <slot name="currentPage" />
                 <slot />
             </main>
         </div>
