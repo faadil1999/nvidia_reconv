@@ -15,4 +15,6 @@ return [
     "save" => "Save",
     "edit" => "Edit",
     "generate" => "Generate",
+    "add" => "Add",
+    "create" => "Create",
 ];

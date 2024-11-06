@@ -12,8 +12,7 @@ class Career extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'career_id',
-        'start_date',
-        'end_date'
+        'title',
+        'description',
     ];
 }

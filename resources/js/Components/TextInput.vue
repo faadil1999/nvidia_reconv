@@ -1,26 +1,52 @@
-<script setup>
-import { onMounted, ref } from 'vue';
-
-const model = defineModel({
-    type: String,
-    required: true,
-});
-
-const input = ref(null);
-
-onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
-        input.value.focus();
-    }
-});
-
-defineExpose({ focus: () => input.value.focus() });
-</script>
-
 <template>
+    <textarea
+        v-if="type === 'textarea'"
+        v-model="inputValue"
+        v-bind="$attrs"
+        ref="inputRef"
+        class="outline-none rounded-lg p-3 w-full block"
+        @click.stop
+    />
     <input
-        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600"
-        v-model="model"
-        ref="input"
+        v-else
+        v-model="inputValue"
+        v-bind="$attrs"
+        ref="inputRef"
+        :type="type"
+        class="outline-none rounded-lg p-3 w-full"
+        @click.stop
     />
 </template>
+
+<script setup>
+import { computed, ref } from "vue";
+
+const props = defineProps({
+    modelValue: {
+        type: [Number, String],
+        default: () => "",
+    },
+    type: {
+        type: String,
+        default: "text",
+        validator: (value) =>
+            ["email", "tel", "text", "textarea", "password", "search"].includes(
+                value
+            ),
+    },
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+const inputRef = ref();
+
+defineExpose({
+    focus: () => inputRef.value?.focus(),
+    blur: () => inputRef.value?.blur(),
+});
+
+const inputValue = computed({
+    get: () => props.modelValue,
+    set: (value) => emit("update:modelValue", value),
+});
+</script>

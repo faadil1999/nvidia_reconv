@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\CareerHistoryFormRequest;
-use App\Models\CareerHistory;
 use Inertia\Inertia;
+use App\Models\Career;
+use Illuminate\Http\Request;
+use App\Models\CareerHistory;
+use App\Http\Requests\CareerHistoryFormRequest;
 
 class CareerHistoryController extends Controller
 {
@@ -44,7 +45,8 @@ class CareerHistoryController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Career/History/Form');
+        $careers = Career::all("title");
+        return Inertia::render('Career/History/Form', ['careers' => $careers]);
     }
 
     /**
