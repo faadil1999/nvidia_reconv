@@ -12,9 +12,9 @@
 
         <div class="px-12">
             <div class="bg-slate-300 rounded-lg p-10 flex flex-col">
-                <FormGrid v-for="career_history in career_histories">
+                <FormGrid v-for="career_history in careerHistoriesList">
                     <h1 class="font-bold col-span-6 text-lg">
-                        {{ career_history.career.title }}
+                        {{ career_history.title }}
                     </h1>
                     <div class="col-span-6">
                         <FormInput disabled>
@@ -129,6 +129,17 @@ const careerOptions = computed(() =>
         return {
             value: career.id,
             label: career.title,
+        };
+    })
+);
+const careerHistoriesList = computed(() =>
+    props.career_histories.map((career_history) => {
+        return {
+            title: career_history.career.title,
+            career_id: career_history.career_id,
+            start_date: career_history.start_date,
+            end_date: career_history.end_date,
+            skills: career_history.skills.map((skill) => skill.id),
         };
     })
 );
