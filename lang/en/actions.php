@@ -17,4 +17,5 @@ return [
     "generate" => "Generate",
     "add" => "Add",
     "create" => "Create",
+    "add_career_history" => "Add career",
 ];

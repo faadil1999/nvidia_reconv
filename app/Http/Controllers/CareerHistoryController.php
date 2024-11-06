@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Skill;
 use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Models\CareerHistory;
@@ -45,8 +46,10 @@ class CareerHistoryController extends Controller
      */
     public function create()
     {
-        $careers = Career::all("title");
-        return Inertia::render('Career/History/Form', ['careers' => $careers]);
+        $careers = Career::all("id", "title");
+        $skills = Skill::all("id", "name");
+
+        return Inertia::render('Career/History/Form', ['careers' => $careers, 'skills' => $skills]);
     }
 
     /**
