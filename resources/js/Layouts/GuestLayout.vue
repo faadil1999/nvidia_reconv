@@ -16,10 +16,7 @@ const props = defineProps({
     >
         <div>
             <Link href="/">
-                <ApplicationLogo
-                    :image_url="image_url"
-                    class="h-20 w-20 fill-current text-gray-500"
-                />
+                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
             </Link>
         </div>
 
