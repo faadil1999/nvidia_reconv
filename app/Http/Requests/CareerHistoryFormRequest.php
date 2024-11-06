@@ -22,12 +22,11 @@ class CareerHistoryFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'career_history' => ['array'],
-            'career_history.career_id' => ['required', 'integer', 'exists:careers,id'],
-            'career_history.start_date' => ['required', 'date'],
-            'career_history.end_date' => ['nullable'],
-            'career_history.skills' => ['array'],
-            'career_history.skills.*' => ['required', 'integer', 'exists:skills,id'],
+            'career_id' => ['required', 'integer', 'exists:careers,id'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['nullable'],
+            'skills' => ['array'],
+            'skills.*' => ['required', 'integer', 'exists:skills,id'],
         ];
     }
 }
