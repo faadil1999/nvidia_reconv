@@ -29,7 +29,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::prefix('/career-histories')->name('career.histories.')->controller(CareerHistoryController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
-        Route::get('/store', 'store')->name('store');
+        Route::post('/store', 'store')->name('store');
         Route::get('/edit', 'edit')->name('edit');
         Route::put('/update', 'update')->name('update');
     });

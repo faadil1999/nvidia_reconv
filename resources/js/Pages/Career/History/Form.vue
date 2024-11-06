@@ -155,18 +155,6 @@ const form = useForm({
 
 const itemsTableRef = ref();
 
-function addCareer(career) {
-    itemsTableRef.value?.add({
-        career_id: career.career_id,
-        start_date: career.start_date,
-        end_date: career.end_date,
-        skills: career.skills,
-    });
-}
-const submitForm = () => {
-    form.post(route("career.histories.store"));
-};
-
 const handleCloseModal = () => {
     showModal.value = false;
 };

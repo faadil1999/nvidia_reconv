@@ -2,7 +2,8 @@
     <Modal :show="show" @close="handleClose">
         <form @submit.prevent="submitForm" class="h-screen">
             <FormGrid class="mt-14 lg:mt-24">
-                <div class="col-span-full">
+                <h1 class="col-span-full">{{ $t("menu.career_histories") }}</h1>
+                <div class="col-span-full mt-5">
                     <FormInput>
                         <template #label>
                             {{ $t("fields.career_name") }}
@@ -13,6 +14,9 @@
                                 v-bind="inputProps"
                                 :options="careerOptions"
                             ></Select>
+                        </template>
+                        <template #error v-if="form.errors?.career_id">
+                            {{ form.errors.career_id }}
                         </template>
                     </FormInput>
                 </div>
@@ -29,6 +33,9 @@
                                 v-bind="inputProps"
                             />
                         </template>
+                        <template #error v-if="form.errors?.start_date">
+                            {{ form.errors.start_date }}
+                        </template>
                     </FormInput>
                 </div>
 
@@ -43,6 +50,9 @@
                                 v-model="form.end_date"
                                 v-bind="inputProps"
                             />
+                        </template>
+                        <template #error v-if="form.errors?.end_date">
+                            {{ form.errors.end_date }}
                         </template>
                     </FormInput>
                 </div>
@@ -60,7 +70,19 @@
                                 multiple
                             ></Select>
                         </template>
+                        <template #error v-if="form.errors?.skills">
+                            {{ form.errors.skills }}
+                        </template>
                     </FormInput>
+                </div>
+                <div>
+                    <button
+                        type="submit"
+                        class="flex flex-row space-x-4 bg-green-500 hover:bg-green-600 text-white rounded-lg px-3 py-1"
+                    >
+                        <span>{{ $t("actions.save") }}</span
+                        ><SaveIcon />
+                    </button>
                 </div>
             </FormGrid>
         </form>
@@ -73,6 +95,7 @@ import FormInput from "@/Components/Form/FormInput.vue";
 import Select from "@/Components/Inputs/Select.vue";
 import { computed, ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
+import { SaveIcon } from "lucide-vue-next";
 
 const props = defineProps({
     show: {
@@ -113,4 +136,8 @@ const form = useForm({
     end_date: "",
     skills: [],
 });
+
+const submitForm = () => {
+    form.post(route("career.histories.store"));
+};
 </script>

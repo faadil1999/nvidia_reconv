@@ -60,6 +60,7 @@ class CareerHistoryController extends Controller
     public function store(CareerHistoryFormRequest $request)
     {
         $validated = $request->validated();
+        $validated['user_id'] = auth()->id();
         dd($validated);
         return redirect()->back()->wits('success', "");
     }
