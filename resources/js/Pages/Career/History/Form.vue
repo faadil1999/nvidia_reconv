@@ -153,19 +153,6 @@ const skillOptions = computed(() =>
     })
 );
 
-const form = useForm({
-    career_histories: [
-        {
-            career_id: "",
-            start_date: "",
-            end_date: "",
-            skills: [],
-        },
-    ],
-});
-
-const itemsTableRef = ref();
-
 const handleCloseModal = () => {
     showModal.value = false;
 };

@@ -1,9 +1,10 @@
 <template>
     <div
-        class="col-span-1 w-full rounded-lg hover:cursor-pointer hover:animate-bounce"
+        class="col-span-1 w-full h-full rounded-lg hover:cursor-pointer hover:animate-bounce"
         :class="bg_color"
     >
         <div class="w-full h-full mx-auto">
+            <slot name="careerlabel"></slot>
             <button class="items-center flex flex-row mx-auto h-full">
                 <slot name="icon">
                     <HomeIcon />

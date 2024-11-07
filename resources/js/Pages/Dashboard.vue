@@ -4,19 +4,38 @@ import BigButton from "@/Components/Dashboard/BigButton.vue";
 import { Head, router } from "@inertiajs/vue3";
 import { DramaIcon, InboxIcon, SettingsIcon } from "lucide-vue-next";
 import { ref } from "vue";
+import SelectCareerPathModal from "@/Components/Modal/SelectCareerPathModal.vue";
 
 const props = defineProps({
     image_url: {
         type: String,
         default: "",
     },
+    careers: {
+        type: Object,
+        default: null,
+    },
 });
 const spin_setting = ref(false);
+const showModal = ref(false);
+const selectedCareerName = ref("");
+
+const handleCloseModal = () => {
+    showModal.value = false;
+};
+const handleOpenModal = () => {
+    showModal.value = true;
+};
 function activateSpinAnimation() {
     spin_setting.value = true;
 }
 function desactivateSpinAnimation() {
     spin_setting.value = false;
+}
+
+function getSelectedCareer(event) {
+    selectedCareerName.value = event.label;
+    handleCloseModal();
 }
 </script>
 
@@ -37,9 +56,18 @@ function desactivateSpinAnimation() {
             </BigButton>
             <!--Career path selected-->
             <BigButton
+                @click="handleOpenModal()"
                 bg_color="bg-green-300"
                 :label="$t('menu.reconversion_career')"
             >
+                <template #careerlabel>
+                    <div
+                        class="text-center text-blue-600"
+                        v-if="selectedCareerName"
+                    >
+                        {{ selectedCareerName }} (selected)
+                    </div>
+                </template>
                 <template #icon>
                     <DramaIcon class="h-20 w-20" />
                 </template>
@@ -63,6 +91,12 @@ function desactivateSpinAnimation() {
                     </button>
                 </div>
             </div>
+            <SelectCareerPathModal
+                :show="showModal"
+                :careers="careers"
+                @close="handleCloseModal"
+                @selectedCareerName="getSelectedCareer"
+            />
         </div>
     </DashboardLayout>
 </template>
