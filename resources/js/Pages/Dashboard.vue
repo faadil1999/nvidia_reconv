@@ -1,44 +1,3 @@
-<script setup>
-import DashboardLayout from "@/Layouts/DashboardLayout.vue";
-import BigButton from "@/Components/Dashboard/BigButton.vue";
-import { Head, router } from "@inertiajs/vue3";
-import { DramaIcon, InboxIcon, SettingsIcon } from "lucide-vue-next";
-import { ref } from "vue";
-import SelectCareerPathModal from "@/Components/Modal/SelectCareerPathModal.vue";
-
-const props = defineProps({
-    image_url: {
-        type: String,
-        default: "",
-    },
-    careers: {
-        type: Object,
-        default: null,
-    },
-});
-const spin_setting = ref(false);
-const showModal = ref(false);
-const selectedCareerName = ref("");
-
-const handleCloseModal = () => {
-    showModal.value = false;
-};
-const handleOpenModal = () => {
-    showModal.value = true;
-};
-function activateSpinAnimation() {
-    spin_setting.value = true;
-}
-function desactivateSpinAnimation() {
-    spin_setting.value = false;
-}
-
-function getSelectedCareer(event) {
-    selectedCareerName.value = event.label;
-    handleCloseModal();
-}
-</script>
-
 <template>
     <Head title="Dashboard" />
 
@@ -78,6 +37,7 @@ function getSelectedCareer(event) {
                 class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer hover:bg-blue-500"
                 @mouseover="activateSpinAnimation"
                 @mouseleave="desactivateSpinAnimation"
+                @click="handleOpenModalGenerator()"
             >
                 <div class="w-full h-full mx-auto">
                     <button class="items-center flex flex-row mx-auto h-full">
@@ -97,6 +57,68 @@ function getSelectedCareer(event) {
                 @close="handleCloseModal"
                 @selectedCareerName="getSelectedCareer"
             />
+
+            <GeneratePathModal
+                :show="showModalGenerator"
+                @close="handleCloseModalGenerator"
+                :selectedCareerName="selectedCareerName"
+                :careerHistories="careerHistories"
+            />
         </div>
     </DashboardLayout>
 </template>
+<script setup>
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
+import BigButton from "@/Components/Dashboard/BigButton.vue";
+import { Head, router } from "@inertiajs/vue3";
+import { DramaIcon, InboxIcon, SettingsIcon } from "lucide-vue-next";
+import { ref } from "vue";
+import SelectCareerPathModal from "@/Components/Modal/SelectCareerPathModal.vue";
+import GeneratePathModal from "@/Components/Modal/GeneratePathModal.vue";
+
+const props = defineProps({
+    image_url: {
+        type: String,
+        default: "",
+    },
+    careers: {
+        type: Object,
+        default: null,
+    },
+    careerHistories: {
+        type: Array,
+        default: [],
+    },
+});
+const spin_setting = ref(false);
+const showModal = ref(false);
+const showModalGenerator = ref(false);
+const selectedCareerName = ref("");
+
+const handleCloseModal = () => {
+    showModal.value = false;
+};
+const handleOpenModal = () => {
+    showModal.value = true;
+};
+
+const handleOpenModalGenerator = () => {
+    showModalGenerator.value = true;
+};
+
+const handleCloseModalGenerator = () => {
+    showModalGenerator.value = false;
+};
+
+function activateSpinAnimation() {
+    spin_setting.value = true;
+}
+function desactivateSpinAnimation() {
+    spin_setting.value = false;
+}
+
+function getSelectedCareer(event) {
+    selectedCareerName.value = event.label;
+    handleCloseModal();
+}
+</script>

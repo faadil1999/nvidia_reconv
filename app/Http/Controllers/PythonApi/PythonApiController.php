@@ -28,7 +28,7 @@ class PythonApiController extends Controller
         ]);
 
         try {
-            $response = $this->pythonApiService->getChatResponse($request->input('content'));
+            $response = $this->pythonApiService->getChatResponse($request);
             return response()->json(['response' => $response]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class PythonApiService
@@ -19,10 +20,10 @@ class PythonApiService
      * @param string $content
      * @return string
      */
-    public function getChatResponse(string $content)
+    public function getChatResponse(Request $request)
     {
-        $response = Http::post("{$this->baseUrl}/chat", [
-            'content' => $content,
+        $response = Http::post("{$this->baseUrl}/send-message/", [
+            'content' =>  $request->input('content')
         ]);
 
         if ($response->successful()) {
