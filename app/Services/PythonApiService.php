@@ -22,11 +22,13 @@ class PythonApiService
      */
     public function getChatResponse(Request $request)
     {
-        $response = Http::post("{$this->baseUrl}/send-message/", [
+        $response = Http::timeout(180)->post("{$this->baseUrl}/send-message/", [
             'content' =>  $request->input('content')
         ]);
 
         if ($response->successful()) {
+            $data = $response->json();
+            dd($data);
             return $response->json();
         }
 

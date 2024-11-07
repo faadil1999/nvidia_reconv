@@ -7,6 +7,7 @@
 /storage/pail
 /vendor
 /pythonNVIDIA_NIM/venv
+/pythonNVIDIA_NIM/app/__pycache__/
 *.pyc
 .env
 .env.backup
