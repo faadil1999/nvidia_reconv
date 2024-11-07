@@ -18,4 +18,6 @@ return [
     "add" => "Add",
     "create" => "Create",
     "add_career_history" => "Add career",
+    "select" => "Select",
+    "clear" => "Clear",
 ];

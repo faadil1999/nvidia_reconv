@@ -37,7 +37,7 @@ class CareerHistoryController extends Controller
             ->paginate(15)
             ->appends($request->query());
 
-        return Inertia::render('Career/History/Index', ['careerHistories' => $careerHistories]);
+        return Inertia::render('Career/History/Index', ['careerHistories' => $careerHistories,]);
     }
 
     /**

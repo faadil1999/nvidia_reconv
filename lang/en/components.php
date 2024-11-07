@@ -24,4 +24,9 @@ return [
     'table' => [
         'nothing_to_display' => 'Nothing to display.',
     ],
+    'modal' => [
+        'dashboard' => [
+            'choose_new_career' => 'Choose your new career'
+        ]
+    ]
 ];
