@@ -93,7 +93,7 @@ import Modal from "../Modal.vue";
 import FormGrid from "@/Components/Form/FormGrid.vue";
 import FormInput from "@/Components/Form/FormInput.vue";
 import Select from "@/Components/Inputs/Select.vue";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { SaveIcon } from "lucide-vue-next";
 
@@ -109,6 +109,14 @@ const props = defineProps({
     skills: {
         type: Array,
         default: [],
+    },
+    careerHistory: {
+        type: Object,
+        default: null,
+    },
+    isEditing: {
+        type: Boolean,
+        default: false,
     },
 });
 
@@ -131,13 +139,40 @@ const skillOptions = computed(() =>
 );
 
 const form = useForm({
-    career_id: "",
-    start_date: "",
-    end_date: "",
-    skills: [],
+    career_id: props.careerHistory?.career_id ?? "",
+    start_date: props.careerHistory?.start_date ?? "",
+    end_date: props.careerHistory?.end_date ?? "",
+    skills: props.careerHistory?.skills ?? [],
 });
 
+watch(
+    () => props.careerHistory,
+    () => {
+        form.career_id = props.careerHistory?.career_id;
+        form.start_date = props.careerHistory?.start_date;
+        form.end_date = props.careerHistory?.end_date;
+        form.skills = props.careerHistory?.skills.map((skill) => skill.id);
+    }
+);
+const emit = defineEmits(["close"]);
+const handleClose = () => {
+    form.clearErrors();
+    emit("close");
+};
+
 const submitForm = () => {
-    form.post(route("career.histories.store"));
+    const { careerHistory } = props;
+    if (!props.isEditing) {
+        form.post(route("career.histories.store"), {
+            onSuccess: handleClose,
+        });
+    } else {
+        form.post(
+            route("career.histories.update", { careerHistory: careerHistory }),
+            {
+                onSuccess: handleClose,
+            }
+        );
+    }
 };
 </script>
