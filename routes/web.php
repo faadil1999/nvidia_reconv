@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CareerHistoryController;
+use App\Http\Controllers\CareerPathController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PythonApi\PythonApiController;
@@ -34,6 +35,11 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('/edit', 'edit')->name('edit');
         Route::post('/update/{careerHistory}', 'update')->name('update');
         Route::delete('/delete/{careerHistory}', 'delete')->name('delete');
+    });
+
+    Route::prefix('/generated-career-path')->name('generated.career.path.')->controller(CareerPathController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{careerPath}', 'show')->name('show');
     });
 
     //Skill

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enum\RessourceTypeEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ressource extends Model
 {
@@ -28,5 +29,17 @@ class Ressource extends Model
         return [
             'type' => RessourceTypeEnum::class,
         ];
+    }
+
+    /*************************Relationship************************ */
+
+    /**
+     * Function for getting the step that belongs to ressource
+     *
+     * @return BelongsTo
+     */
+    public function step(): BelongsTo
+    {
+        return $this->belongsTo(Step::class);
     }
 }
