@@ -157,6 +157,7 @@ import {
     ChartBarIcon,
     FolderIcon,
     ShareIcon,
+    InboxIcon,
     HomeIcon,
 } from "lucide-vue-next";
 import { usePage } from "@inertiajs/vue3";
@@ -192,6 +193,13 @@ const tabs = computed(() => {
         route: route("dashboard"),
         icon: HomeIcon,
         selected: route().current("dashboard"),
+    });
+
+    routes.push({
+        name: "Career histories",
+        route: route("career.histories.create"),
+        icon: InboxIcon,
+        selected: route().current("career.histories.*"),
     });
 
     return routes;
