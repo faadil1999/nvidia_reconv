@@ -2,68 +2,72 @@
     <Head title="Dashboard" />
 
     <DashboardLayout :image_url="image_url">
-        <div class="p-12 grid grid-cols-3 gap-x-4 h-1/2">
-            <!--Career history-->
-            <BigButton
-                bg_color="bg-yellow-300"
-                @click="router.get(route('career.histories.index'))"
-                :label="$t('menu.career_histories')"
-            >
-                <template #icon>
-                    <InboxIcon class="h-20 w-20" />
-                </template>
-            </BigButton>
-            <!--Career path selected-->
-            <BigButton
-                @click="handleOpenModal()"
-                bg_color="bg-green-300"
-                :label="$t('menu.reconversion_career')"
-            >
-                <template #careerlabel>
-                    <div
-                        class="text-center text-blue-600"
-                        v-if="selectedCareerName"
-                    >
-                        {{ selectedCareerName }} (selected)
+        <div class="h-screen">
+            <div class="p-12 grid grid-cols-3 gap-x-4 h-1/2">
+                <!--Career history-->
+                <BigButton
+                    bg_color="bg-yellow-300"
+                    @click="router.get(route('career.histories.create'))"
+                    :label="$t('menu.career_histories')"
+                >
+                    <template #icon>
+                        <InboxIcon class="h-20 w-20" />
+                    </template>
+                </BigButton>
+                <!--Career path selected-->
+                <BigButton
+                    @click="handleOpenModal()"
+                    bg_color="bg-green-300"
+                    :label="$t('menu.reconversion_career')"
+                >
+                    <template #careerlabel>
+                        <div
+                            class="text-center text-blue-600"
+                            v-if="selectedCareerName"
+                        >
+                            {{ selectedCareerName }} (selected)
+                        </div>
+                    </template>
+                    <template #icon>
+                        <DramaIcon class="h-20 w-20" />
+                    </template>
+                </BigButton>
+
+                <!--Generate career and needed skills according to career history-->
+                <div
+                    class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer hover:bg-blue-500"
+                    @mouseover="activateSpinAnimation"
+                    @mouseleave="desactivateSpinAnimation"
+                    @click="handleOpenModalGenerator()"
+                >
+                    <div class="w-full h-full mx-auto">
+                        <button
+                            class="items-center flex flex-row mx-auto h-full"
+                        >
+                            <SettingsIcon
+                                class="h-20 w-20"
+                                :class="spin_setting ? 'animate-spin' : ''"
+                            />
+                            <span class="text-lg">
+                                {{ $t("menu.generate") }}
+                            </span>
+                        </button>
                     </div>
-                </template>
-                <template #icon>
-                    <DramaIcon class="h-20 w-20" />
-                </template>
-            </BigButton>
-
-            <!--Generate career and needed skills according to career history-->
-            <div
-                class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer hover:bg-blue-500"
-                @mouseover="activateSpinAnimation"
-                @mouseleave="desactivateSpinAnimation"
-                @click="handleOpenModalGenerator()"
-            >
-                <div class="w-full h-full mx-auto">
-                    <button class="items-center flex flex-row mx-auto h-full">
-                        <SettingsIcon
-                            class="h-20 w-20"
-                            :class="spin_setting ? 'animate-spin' : ''"
-                        />
-                        <span class="text-lg">
-                            {{ $t("menu.generate") }}
-                        </span>
-                    </button>
                 </div>
-            </div>
-            <SelectCareerPathModal
-                :show="showModal"
-                :careers="careers"
-                @close="handleCloseModal"
-                @selectedCareerName="getSelectedCareer"
-            />
+                <SelectCareerPathModal
+                    :show="showModal"
+                    :careers="careers"
+                    @close="handleCloseModal"
+                    @selectedCareerName="getSelectedCareer"
+                />
 
-            <GeneratePathModal
-                :show="showModalGenerator"
-                @close="handleCloseModalGenerator"
-                :selectedCareerName="selectedCareerName"
-                :careerHistories="careerHistories"
-            />
+                <GeneratePathModal
+                    :show="showModalGenerator"
+                    @close="handleCloseModalGenerator"
+                    :selectedCareerName="selectedCareerName"
+                    :careerHistories="careerHistories"
+                />
+            </div>
         </div>
     </DashboardLayout>
 </template>

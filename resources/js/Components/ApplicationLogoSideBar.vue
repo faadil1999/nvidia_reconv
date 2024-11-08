@@ -1,5 +1,5 @@
 <template>
-    <img :src="image_url" class="w-36 h-36" />
+    <img :src="image_url" class="w-32 h-32" />
 </template>
 
 <script setup>

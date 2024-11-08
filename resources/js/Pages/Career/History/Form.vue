@@ -2,11 +2,8 @@
     <Head title="Career histories" />
     <DashboardLayout>
         <template #currentPage>
-            <div>
-                <h1>
-                    {{ $t("menu.career_histories") }} >
-                    {{ $t("actions.create") }}
-                </h1>
+            <div class="px-28 pt-8 text-lg text-black dark:text-white">
+                <h1>{{ $t("menu.career_histories") }}</h1>
             </div>
         </template>
 
