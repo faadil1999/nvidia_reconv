@@ -66,7 +66,7 @@ class CareerHistoryController extends Controller
         $careerHistory = CareerHistory::create(Arr::except($validated, ['skills']));
         $careerHistory->skills()->sync($validated['skills']);
 
-        return redirect()->route('career.histories.create')->wits('success', "Added successfuly");
+        return redirect()->route('career.histories.create')->with('success', "Added successfuly");
     }
 
     /**
@@ -75,8 +75,27 @@ class CareerHistoryController extends Controller
      * @param CareerHistoryFromRequest $request
      * @return Response
      */
-    public function update(CareerHistoryFormRequest $request)
+    public function update(CareerHistoryFormRequest $request, CareerHistory $careerHistory)
     {
-        $validate = $request->validated();
+        $validated = $request->validated();
+
+        $careerHistory->update(Arr::except($validated, ['skills']));
+
+        $careerHistory->skills()->sync($validated['skills']);
+        return redirect()->route('career.histories.create')->with('success', "Updated successfuly");
+    }
+
+    /**
+     * Function for deleting career history
+     *
+     * @param CareerHistory $careerHistory
+     *
+     * @return Response
+     */
+    public function delete(CareerHistory $careerHistory)
+    {
+        $careerHistory->delete();
+
+        return redirect()->route('career.histories.create')->with('success', "Deleted successfuly");
     }
 }

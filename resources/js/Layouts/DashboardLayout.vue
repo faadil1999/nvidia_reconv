@@ -11,7 +11,7 @@
             class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden"
         >
             <Header />
-            <main class="min-h-screen bg-theme-primary-light dark:bg-gray-800">
+            <main class="bg-theme-primary-light dark:bg-gray-800">
                 <slot name="currentPage" />
                 <slot />
             </main>

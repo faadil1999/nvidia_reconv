@@ -32,7 +32,8 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::get('/edit', 'edit')->name('edit');
-        Route::put('/update', 'update')->name('update');
+        Route::post('/update/{careerHistory}', 'update')->name('update');
+        Route::delete('/delete/{careerHistory}', 'delete')->name('delete');
     });
 
     //Skill
