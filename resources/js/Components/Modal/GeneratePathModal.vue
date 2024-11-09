@@ -21,7 +21,7 @@
             <div class="text-center my-10">Convert TO</div>
             <div>
                 <h1 class="text-center font-bold text-lg text-blue">
-                    {{ selectedCareerName }}
+                    {{ selectedCareer?.label }}
                 </h1>
             </div>
             <div>
@@ -54,8 +54,8 @@ const props = defineProps({
         type: Array,
         default: [],
     },
-    selectedCareerName: {
-        type: String,
+    selectedCareer: {
+        type: Object,
         default: "",
     },
 });
@@ -78,7 +78,17 @@ const content_request = computed(() => {
             return `I was ${objet.career.title} and i have these skills: ${skillsNames}`;
         })
         .join(" and ");
-    let request = `${resultat} now i want to be ${props.selectedCareerName}.Based on previous careers and skills Give me the steps i need to reach my goals and also the ressources i need for each step `;
+    let request = `${resultat} now i want to be ${props.selectedCareer.label}.Based on previous careers and skills, provide the steps I need to reach my goals in the following format:
+
+    Introduction: Begin with an overview that motivates and contextualizes the transition toward the new role.
+
+    For each step, provide:
+        Step [Number] Title: Clearly state the objective of the step.
+        Description: Explain what this step entails and why it’s important.
+        Resources: List recommended resources such as online courses, books, or platforms relevant to this step.
+        Skills to focus on: Outline specific skills that should be emphasized during this step.
+
+    Additional Recommendations: At the end, offer any extra tips or suggestions for success.`;
 
     return request;
 });
@@ -87,12 +97,12 @@ async function generate() {
     try {
         const response = await axios.post("chat-response", {
             content: content_request.value,
+            career_id: props.selectedCareer.value,
         });
-
-        // Une fois la requête réussie, vous pouvez naviguer
-        Inertia.visit(route("dashboard")); // Rediriger vers une autre page
     } catch (error) {
         console.error("Erreur lors de la requête POST", error);
+    } finally {
+        alert("Bien"); // Arrête le chargement
     }
 }
 </script>
