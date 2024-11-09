@@ -159,6 +159,7 @@ import {
     ShareIcon,
     InboxIcon,
     HomeIcon,
+    BotIcon,
 } from "lucide-vue-next";
 import { usePage } from "@inertiajs/vue3";
 import { computed, onMounted, onUnmounted, ref, watch } from "vue";
@@ -200,6 +201,13 @@ const tabs = computed(() => {
         route: route("career.histories.create"),
         icon: InboxIcon,
         selected: route().current("career.histories.*"),
+    });
+
+    routes.push({
+        name: "Career path",
+        route: route("generated.career.path.index"),
+        icon: BotIcon,
+        selected: route().current("generated.career.path.*"),
     });
 
     return routes;

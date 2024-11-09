@@ -15,9 +15,10 @@ class CareerPathController extends Controller
      */
     public function index()
     {
-        $careerPaths = CareerPath::all();
-        $careerPaths->load(['steps']);
+        $careerPaths = CareerPath::all("id", "introduction", "career_id");
 
-        return Inertia::render('Career/Path/Index',);
+        $careerPaths->load(['career']);
+
+        return Inertia::render('Career/Path/Index', ['careerPaths' => $careerPaths]);
     }
 }
