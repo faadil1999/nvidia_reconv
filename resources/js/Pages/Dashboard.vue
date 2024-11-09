@@ -6,6 +6,17 @@
             <div class="p-12 grid grid-cols-3 gap-4 h-1/2">
                 <!--Career history-->
                 <BigButton
+                    v-motion
+                    :initial="{ opacity: 0, y: 100 }"
+                    :visibleOnce="{
+                        opacity: 100,
+                        y: 0,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 250,
+                        },
+                    }"
+                    :delay="300"
                     bg_color="bg-yellow-300"
                     @click="router.get(route('career.histories.create'))"
                     :label="$t('menu.career_histories')"
@@ -16,6 +27,17 @@
                 </BigButton>
                 <!--Career path selected-->
                 <BigButton
+                    v-motion
+                    :initial="{ opacity: 0, y: 100 }"
+                    :visibleOnce="{
+                        opacity: 100,
+                        y: 0,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 250,
+                        },
+                    }"
+                    :delay="500"
                     @click="handleOpenModal()"
                     bg_color="bg-green-300"
                     :label="$t('menu.reconversion_career')"
@@ -35,6 +57,17 @@
 
                 <!--Generate career and needed skills according to career history-->
                 <div
+                    v-motion
+                    :initial="{ opacity: 0, y: 100 }"
+                    :visibleOnce="{
+                        opacity: 100,
+                        y: 0,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 250,
+                        },
+                    }"
+                    :delay="700"
                     class="col-span-1 w-full bg-purple-300 rounded-lg hover:cursor-pointer hover:bg-purple-500"
                     @mouseover="activateSpinAnimation"
                     @mouseleave="desactivateSpinAnimation"
@@ -57,7 +90,20 @@
 
                 <!--Generated career results-->
                 <div
+                    v-motion
+                    :initial="{ opacity: 0, y: 100 }"
+                    :visibleOnce="{
+                        opacity: 100,
+                        y: 0,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 250,
+                        },
+                    }"
+                    :delay="900"
                     class="col-span-1 w-full bg-blue-300 rounded-lg hover:cursor-pointer hover:bg-blue-500"
+                    @mouseover="activateBounceAnimation"
+                    @mouseleave="desactivateBounceAnimation"
                     @click="router.get(route('generated.career.path.index'))"
                 >
                     <div class="w-full h-full mx-auto">
@@ -66,7 +112,7 @@
                         >
                             <BotIcon
                                 class="h-20 w-20"
-                                :class="spin_setting ? 'animate-spin' : ''"
+                                :class="bounce_setting ? 'animate-bounce' : ''"
                             />
                             <span class="text-lg">
                                 {{ $t("menu.generated") }}
@@ -116,6 +162,7 @@ const props = defineProps({
     },
 });
 const spin_setting = ref(false);
+const bounce_setting = ref(false);
 const showModal = ref(false);
 const showModalGenerator = ref(false);
 const selectedCareer = ref(null);
@@ -140,6 +187,13 @@ function activateSpinAnimation() {
 }
 function desactivateSpinAnimation() {
     spin_setting.value = false;
+}
+
+function activateBounceAnimation() {
+    bounce_setting.value = true;
+}
+function desactivateBounceAnimation() {
+    bounce_setting.value = false;
 }
 
 function getSelectedCareer(event) {

@@ -16,7 +16,8 @@ class Ressource extends Model
     protected $fillable = [
         'url',
         'type',
-        'step_id'
+        'step_id',
+        'name',
     ];
 
     /**

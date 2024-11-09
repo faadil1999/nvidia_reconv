@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\Skill;
+use App\Models\CareerPath;
 use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
+use App\Enum\RessourceTypeEnum;
 use Illuminate\Support\Facades\Http;
 
 class PythonApiService
@@ -85,8 +88,32 @@ class PythonApiService
         $additionalTipsPattern = '/\\*\\*(Additional Recommendations|Additional Tips):\\*\\*(.*)/s';
         preg_match($additionalTipsPattern, $text, $additionalTipsMatch);
         $additionalTips = trim($additionalTipsMatch[2] ?? '');
-
-
+        $careerPath = CareerPath::create([
+            'user_id' => auth()->id(),
+            'career_id' => $careerId,
+            'introduction' => $introduction,
+            'comment'   => $additionalTips
+        ]);
+        $nbr_step = 0;
+        foreach ($steps as $step) {
+            $nbr_step++;
+            $stepModel = $careerPath->steps()->create([
+                'title' => $step['title'],
+                'description' => $step['description'],
+                'order' => $nbr_step,
+            ]);
+            foreach ($step['resources'] as $resource) {
+                $stepModel->ressources()->create([
+                    'name' => $resource,
+                ]);
+            }
+            foreach ($step['skills'] as $skill) {
+                $skillModel = Skill::create([
+                    'name' => $skill
+                ]);
+                $careerPath->skills()->attach($skillModel->id);
+            }
+        }
 
         dd($introduction, $steps, $additionalTips);
     }
