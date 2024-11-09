@@ -2,30 +2,21 @@
     <Head title="Career path" />
     <DashboardLayout>
         <template #currentPage>
-            <div>
+            <div class="px-28 pt-8 text-lg text-black dark:text-white">
                 <h1>{{ $t("menu.career_path") }}</h1>
             </div>
         </template>
 
-        <div class="px-12 mx-12 mt-14 flex flex-col items-end">
-            <AddButton
-                @click="router.get(route('career.histories.create'))"
-            ></AddButton>
-            <div class="mt-4 w-full bg-slate-300 rounded-lg">
-                <Table :data="careerHistories.data">
+        <div class="px-8 mx-12 mt-14 flex flex-col items-end">
+            <div class="mt-4 w-full bg-slate-300 dark:bg-slate-700 rounded-lg">
+                <Table :data="careerPaths">
                     <template #header>
                         <th class="px-2 py-3 sm:px-4">#</th>
                         <th class="px-2 py-3 sm:px-4">
                             {{ $t("fields.name") }}
                         </th>
                         <th class="px-2 py-3 sm:px-4">
-                            {{ $t("fields.description") }}
-                        </th>
-                        <th class="px-2 py-3 sm:px-4">
-                            {{ $t("fields.start_date") }}
-                        </th>
-                        <th class="px-2 py-3 sm:px-4">
-                            {{ $t("fields.end_date") }}
+                            {{ $t("fields.introduction") }}
                         </th>
                         <th class="px-2 py-3 sm:px-4 flex justify-end">
                             {{ $t("views.common.actions") }}
@@ -35,15 +26,33 @@
                         <td class="py-2 px-2 text-left sm:px-4">
                             {{ item.id }}
                         </td>
-                        <td class="py-2 px-2 text-left sm:px-4">
-                            {{ item.career.name }}
+                        <td
+                            class="py-2 px-2 text-left sm:px-4 font-bold text-blue-400"
+                        >
+                            {{ item.career?.title }}
                         </td>
                         <td class="py-2 px-2 text-left sm:px-4">
-                            {{ item.career.description }}
+                            {{ item.introduction }}
+                        </td>
+                        <td class="py-2 px-2 text-left sm:px-4">
+                            <button
+                                class="px-2 py-1 text-white bg-blue-400 rounded-lg flex flex-row space-x-2 hover:bg-blue-600"
+                                @click="
+                                    router.get(
+                                        route('generated.career.path.show', {
+                                            careerPath: item,
+                                        })
+                                    )
+                                "
+                            >
+                                <p>
+                                    {{ $t("actions.show") }}
+                                </p>
+                                <EyeIcon />
+                            </button>
                         </td>
                     </template>
                 </Table>
-                <Pagination class="mt-6" :links="careerHistories.links" />
             </div>
         </div>
     </DashboardLayout>
@@ -55,9 +64,10 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
 import AddButton from "@/Components/Buttons/AddButton.vue";
 import { router } from "@inertiajs/vue3";
+import { EyeIcon } from "lucide-vue-next";
 
 const props = defineProps({
-    careerHistories: {
+    careerPaths: {
         type: Array,
         default: [],
     },
