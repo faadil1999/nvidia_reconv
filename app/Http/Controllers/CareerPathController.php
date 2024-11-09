@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CareerPath;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CareerPathController extends Controller
 {
@@ -16,5 +17,7 @@ class CareerPathController extends Controller
     {
         $careerPaths = CareerPath::all();
         $careerPaths->load(['steps']);
+
+        return Inertia::render('Career/Path/Index',);
     }
 }
