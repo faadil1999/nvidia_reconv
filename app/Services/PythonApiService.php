@@ -53,7 +53,6 @@ class PythonApiService
     public function manageContent(array $data, int $careerId)
     {
         $text = $data['completion'];
-        // Extraction de l'introduction avant les étapes
         $patternIntroduction = '/^(.*?)\n\n(?=\\*\\*Step)/s';
         preg_match($patternIntroduction, $text, $introductionMatch);
         $introduction = trim($introductionMatch[1] ?? '');
@@ -85,9 +84,10 @@ class PythonApiService
         }
 
         // Extraction de la section Additional Recommendations
-        $additionalTipsPattern = '/\\*\\*(Additional Recommendations|Additional Tips):\\*\\*(.*)/s';
+        $additionalTipsPattern = '/\\*\\*(Additional Recommendations|Additional Tips)\\*\\*\\n(.*)/s';
         preg_match($additionalTipsPattern, $text, $additionalTipsMatch);
         $additionalTips = trim($additionalTipsMatch[2] ?? '');
+
         $careerPath = CareerPath::create([
             'user_id' => auth()->id(),
             'career_id' => $careerId,
