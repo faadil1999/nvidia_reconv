@@ -14,4 +14,5 @@ return [
         'singular' => 'Skill',
         'plural' => 'Skills',
     ],
+    'comment'   => 'Comment',
 ];
