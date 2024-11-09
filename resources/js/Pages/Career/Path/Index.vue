@@ -34,7 +34,9 @@
                         <td class="py-2 px-2 text-left sm:px-4">
                             {{ item.introduction }}
                         </td>
-                        <td class="py-2 px-2 text-left sm:px-4">
+                        <td
+                            class="py-2 px-2 text-left sm:px-4 flex flex-row space-x-2"
+                        >
                             <button
                                 class="px-2 py-1 text-white bg-blue-400 rounded-lg flex flex-row space-x-2 hover:bg-blue-600"
                                 @click="
@@ -50,6 +52,16 @@
                                 </p>
                                 <EyeIcon />
                             </button>
+
+                            <button
+                                class="px-2 py-1 text-white bg-red-400 rounded-lg flex flex-row space-x-2 hover:bg-red-600"
+                                @click="deleteCareerPath(item)"
+                            >
+                                <p>
+                                    {{ $t("actions.delete") }}
+                                </p>
+                                <Trash2Icon />
+                            </button>
                         </td>
                     </template>
                 </Table>
@@ -64,7 +76,7 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
 import AddButton from "@/Components/Buttons/AddButton.vue";
 import { router } from "@inertiajs/vue3";
-import { EyeIcon } from "lucide-vue-next";
+import { EyeIcon, Trash2Icon } from "lucide-vue-next";
 
 const props = defineProps({
     careerPaths: {
@@ -72,4 +84,14 @@ const props = defineProps({
         default: [],
     },
 });
+
+function deleteCareerPath(item) {
+    if (confirm("Do want to delete this career path ?")) {
+        router.delete(
+            route("generated.career.path.delete", {
+                careerPath: item,
+            })
+        );
+    }
+}
 </script>

@@ -21,4 +21,5 @@ return [
     "select" => "Select",
     "clear" => "Clear",
     "show" => "Show",
+    "delete" => "Delete",
 ];

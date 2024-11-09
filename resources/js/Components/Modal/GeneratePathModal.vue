@@ -1,7 +1,7 @@
 <template>
     <Modal :show="show" @close="handleClose">
         <div
-            class="h-screen bg-white dark:bg-slate-600 text-white p-10 rounded-lg"
+            class="h-screen bg-white dark:bg-slate-600 dark:text-white p-10 rounded-lg"
         >
             <h1 class="text-lg font-bold text-center">Resume</h1>
             <div v-for="career_h in careerHistories" class="mt-6">
@@ -41,9 +41,6 @@
 </template>
 <script setup>
 import Modal from "../Modal.vue";
-import FormGrid from "@/Components/Form/FormGrid.vue";
-import FormInput from "@/Components/Form/FormInput.vue";
-import Select from "@/Components/Inputs/Select.vue";
 import { computed, ref } from "vue";
 import { useForm, router } from "@inertiajs/vue3";
 import { CogIcon, GrabIcon, SaveIcon, Trash, TrashIcon } from "lucide-vue-next";
@@ -59,6 +56,8 @@ const props = defineProps({
         default: "",
     },
 });
+
+const emit = defineEmits(["isGenerating"]);
 
 const spin_setting = ref(false);
 function activateSpinAnimation() {
@@ -95,6 +94,7 @@ const content_request = computed(() => {
 
 async function generate() {
     try {
+        emit("isGenerating", true);
         const response = await axios.post("chat-response", {
             content: content_request.value,
             career_id: props.selectedCareer.value,
@@ -102,7 +102,8 @@ async function generate() {
     } catch (error) {
         console.error("Erreur lors de la requête POST", error);
     } finally {
-        alert("Bien"); // Arrête le chargement
+        emit("isGenerating", false);
+        alert("You've got your new career path"); // Arrête le chargement
     }
 }
 </script>

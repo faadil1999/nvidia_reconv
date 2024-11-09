@@ -79,11 +79,18 @@
                         >
                             <SettingsIcon
                                 class="h-20 w-20"
-                                :class="spin_setting ? 'animate-spin' : ''"
+                                :class="
+                                    spin_setting || isGenerating
+                                        ? 'animate-spin'
+                                        : ''
+                                "
                             />
                             <span class="text-lg">
                                 {{ $t("menu.generate") }}
                             </span>
+                            <span class="pl-1 text-red-500" v-if="isGenerating">
+                                (is Generating)</span
+                            >
                         </button>
                     </div>
                 </div>
@@ -133,6 +140,7 @@
                     @close="handleCloseModalGenerator"
                     :selectedCareer="selectedCareer"
                     :careerHistories="careerHistories"
+                    @is-generating="handleIsGenerating"
                 />
             </div>
         </div>
@@ -166,6 +174,7 @@ const bounce_setting = ref(false);
 const showModal = ref(false);
 const showModalGenerator = ref(false);
 const selectedCareer = ref(null);
+const isGenerating = ref(false);
 
 const handleCloseModal = () => {
     showModal.value = false;
@@ -175,7 +184,13 @@ const handleOpenModal = () => {
 };
 
 const handleOpenModalGenerator = () => {
-    showModalGenerator.value = true;
+    if (
+        !isGenerating.value &&
+        selectedCareer.value &&
+        props.careerHistories != []
+    ) {
+        showModalGenerator.value = true;
+    }
 };
 
 const handleCloseModalGenerator = () => {
@@ -199,5 +214,9 @@ function desactivateBounceAnimation() {
 function getSelectedCareer(event) {
     selectedCareer.value = event;
     handleCloseModal();
+}
+
+function handleIsGenerating(event) {
+    isGenerating.value = event;
 }
 </script>

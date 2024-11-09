@@ -40,6 +40,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::prefix('/generated-career-path')->name('generated.career.path.')->controller(CareerPathController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{careerPath}', 'show')->name('show');
+        Route::delete('/delete/{careerPath}', 'delete')->name('delete');
     });
 
     //Skill

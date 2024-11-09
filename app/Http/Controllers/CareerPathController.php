@@ -33,4 +33,18 @@ class CareerPathController extends Controller
         $careerPath->load(['steps.ressources', 'skills']);
         return Inertia::render('Career/Path/Show', ['careerPath' => $careerPath]);
     }
+
+    /**
+     * Function for deletting selecting careerPath
+     *
+     * @param CareerPath $careerPath
+     *
+     * @return Response
+     */
+    public function delete(CareerPath $careerPath)
+    {
+        $careerPath->delete();
+
+        return redirect()->back()->with('success', 'Deleted succeffully');
+    }
 }
