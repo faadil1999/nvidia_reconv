@@ -7,7 +7,7 @@
             </div>
         </template>
 
-        <div class="px-8 mx-12 mt-14 flex flex-col items-end">
+        <div class="px-8 mx-12 mt-14 flex flex-col items-end min-h-screen">
             <div class="mt-4 w-full bg-slate-300 dark:bg-slate-700 rounded-lg">
                 <Table :data="careerPaths">
                     <template #header>

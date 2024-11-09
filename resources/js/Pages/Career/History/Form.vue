@@ -8,7 +8,7 @@
         </template>
 
         <div class="px-12">
-            <div class="rounded-lg p-10 flex flex-col">
+            <div class="rounded-lg p-10 flex flex-col min-h-screen">
                 <FormGrid v-for="career_history in careerHistoriesList">
                     <div
                         class="bg-slate-50 dark:bg-slate-700 col-span-6 p-8 rounded-lg mt-10"

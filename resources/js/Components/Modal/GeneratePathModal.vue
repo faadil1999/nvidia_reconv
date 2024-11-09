@@ -82,7 +82,8 @@ const content_request = computed(() => {
     Introduction: Begin with an overview that motivates and contextualizes the transition toward the new role.
 
     For each step, provide:
-        Step [Number] Title: Clearly state the objective of the step.
+        Step [Number]
+        Title: Clearly state the objective of the step.
         Description: Explain what this step entails and why it’s important.
         Resources: List recommended resources such as online courses, books, or platforms relevant to this step.
         Skills to focus on: Outline specific skills that should be emphasized during this step.
