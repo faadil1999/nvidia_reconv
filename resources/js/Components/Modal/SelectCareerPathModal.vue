@@ -24,7 +24,7 @@
                 <button
                     type="button"
                     @click="selectCareer()"
-                    class="flex flex-row space-x-4 bg-green-500 hover:bg-green-600 text-white rounded-lg px-3 py-1"
+                    class="flex flex-row space-x-4 bg-green-500 hover:bg-green-600 dark:text-white rounded-lg px-3 py-1"
                 >
                     <span>{{ $t("actions.select") }}</span>
                     <GrabIcon />
