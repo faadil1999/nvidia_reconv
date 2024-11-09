@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CareerPath extends Model
 {
+    use BelongsToUser;
     /**
      * The attributes that are mass assignable.
      *
@@ -36,7 +38,6 @@ class CareerPath extends Model
      * Get all steps of career path
      *
      * @return HasMany
-     *
      */
     public function steps(): HasMany
     {

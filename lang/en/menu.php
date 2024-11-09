@@ -6,5 +6,13 @@ return [
     'reconversion_career' => 'Reconversion career',
     'generate' => 'Generate',
     'generated' => 'Generated career path',
+    'ressource' => [
+        'singular' => 'Ressource',
+        'plural'  => 'Ressources'
+    ],
+    'skill' => [
+        'singular' => 'Skill',
+        'plural'   => 'Skills',
+    ],
 
 ];
