@@ -5,7 +5,9 @@
                 <h1>{{ $t("menu.generated") }}</h1>
             </div>
         </template>
-        <div class="px-8 mx-12 mt-14 flex flex-col dark:text-white">
+        <div
+            class="px-8 mx-12 mt-14 flex flex-col dark:text-white min-h-screen"
+        >
             <!--Introduction-->
             <h1 class="text-lg font-bold">{{ $t("fields.introduction") }} :</h1>
             <p class="w-full p-2 text-justify py-6">
