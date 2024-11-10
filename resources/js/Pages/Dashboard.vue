@@ -3,7 +3,7 @@
 
     <DashboardLayout :image_url="image_url">
         <div class="h-screen">
-            <div class="p-12 grid grid-cols-3 gap-4 h-1/2">
+            <div class="p-12 grid grid-cols-1 lg:grid-cols-3 gap-4 h-1/2">
                 <!--Career history-->
                 <BigButton
                     v-motion

@@ -7,7 +7,9 @@
             </div>
         </template>
 
-        <div class="px-8 mx-12 mt-14 flex flex-col items-end min-h-screen">
+        <div
+            class="lg:px-8 lg:mx-12 mt-14 flex flex-col items-end min-h-screen"
+        >
             <div class="mt-4 w-full bg-slate-300 dark:bg-slate-700 rounded-lg">
                 <Table :data="careerPaths">
                     <template #header>
@@ -31,14 +33,16 @@
                         >
                             {{ item.career?.title }}
                         </td>
-                        <td class="py-2 px-2 text-left sm:px-4">
-                            {{ item.introduction }}
+                        <td class="lg:py-4 px-2 text-left sm:px-4">
+                            <p class="h-20 overflow-hidden">
+                                {{ item.introduction }}
+                            </p>
                         </td>
                         <td
-                            class="py-2 px-2 text-left sm:px-4 flex flex-row space-x-2"
+                            class="py-2 px-2 text-left sm:px-4 flex flex-col lg:flex-row space-x-2 mx-auto"
                         >
                             <button
-                                class="px-2 py-1 text-white bg-blue-400 rounded-lg flex flex-row space-x-2 hover:bg-blue-600"
+                                class="px-2 py-1 text-white mx-auto bg-blue-400 rounded-lg flex flex-row space-x-2 hover:bg-blue-600"
                                 @click="
                                     router.get(
                                         route('generated.career.path.show', {
@@ -54,7 +58,7 @@
                             </button>
 
                             <button
-                                class="px-2 py-1 text-white bg-red-400 rounded-lg flex flex-row space-x-2 hover:bg-red-600"
+                                class="mt-2 lg:mt-0 px-2 py-1 text-white bg-red-400 rounded-lg flex flex-row space-x-2 hover:bg-red-600"
                                 @click="deleteCareerPath(item)"
                             >
                                 <p>

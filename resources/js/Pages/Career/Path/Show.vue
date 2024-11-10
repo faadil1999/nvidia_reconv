@@ -6,7 +6,7 @@
             </div>
         </template>
         <div
-            class="px-8 mx-12 mt-14 flex flex-col dark:text-white min-h-screen"
+            class="px-4 lg:px-8 mx-4 lg:mx-12 mt-14 flex flex-col dark:text-white min-h-screen"
         >
             <!--Introduction-->
             <h1 class="text-lg font-bold">{{ $t("fields.introduction") }} :</h1>
@@ -14,7 +14,7 @@
                 {{ careerPath?.introduction }}
             </p>
             <!--Steps-->
-            <div class="grid grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
                 <div
                     v-for="item in careerPath?.steps"
                     :key="item.id"
@@ -29,7 +29,7 @@
                         },
                     }"
                     :delay="item?.order * 200"
-                    class="bg-green-400 rounded-lg"
+                    class="bg-green-400 rounded-lg col-span-3 lg:col-span-1 mt-3 lg:mt-0"
                 >
                     <div class="border-b-2 py-2">
                         <h1 class="text-lg font-bold text-center">
@@ -90,7 +90,7 @@
             <!--Comment-->
             <div class="py-5 dark:text-white">
                 <h1 class="font-bold">{{ $t("fields.comment") }}:</h1>
-                <p class="w-full mt-4">
+                <p class="w-full mt-4 text-justify">
                     {{ careerPath?.comment }}
                 </p>
             </div>

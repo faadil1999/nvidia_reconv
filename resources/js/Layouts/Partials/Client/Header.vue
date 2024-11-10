@@ -112,6 +112,18 @@
                     >
                         Dashboard
                     </ResponsiveNavLink>
+                    <ResponsiveNavLink
+                        :href="route('career.histories.create')"
+                        :active="route().current('career.histories.*')"
+                    >
+                        Career histories
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink
+                        :href="route('generated.career.path.index')"
+                        :active="route().current('generated.career.path.*')"
+                    >
+                        Career path
+                    </ResponsiveNavLink>
                 </div>
 
                 <!-- Responsive Settings Options -->
