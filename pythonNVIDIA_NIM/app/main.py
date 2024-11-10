@@ -11,7 +11,7 @@ class ChatRequest(BaseModel):
 @app.post("/send-message/")
 async def send_message(request: ChatRequest):
     try:
-        print("PREEEEERRRE")
+        print("Ready")
         # Initializ the chat generation
         completion = create_chat_completion(request.content)
 
