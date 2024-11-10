@@ -17,7 +17,6 @@
         @select="$emit('change', $event)"
         @deselect="$emit('change', $event)"
         @clear="$emit('clear')"
-        :classes="multiSelectStyle"
     />
 </template>
 <script setup>
@@ -65,8 +64,4 @@ const inputValue = computed({
     set: (value) => emit("update:modelValue", value),
 });
 </script>
-<style>
-@import "@vueform/multiselect/themes/tailwind.css";
-/* or */
-/* @import './path/to/node_modules/@vueform/multiselect/themes/tailwind.css'; */
-</style>
+<style src="@vueform/multiselect/themes/default.css"></style>
