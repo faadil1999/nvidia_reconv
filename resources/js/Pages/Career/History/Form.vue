@@ -2,13 +2,13 @@
     <Head title="Career histories" />
     <DashboardLayout>
         <template #currentPage>
-            <div class="px-28 pt-8 text-lg text-black dark:text-white">
+            <div class="px-10 lg:px-28 pt-8 text-lg text-black dark:text-white">
                 <h1>{{ $t("menu.career_histories") }}</h1>
             </div>
         </template>
 
-        <div class="px-12">
-            <div class="rounded-lg p-10 flex flex-col min-h-screen">
+        <div class="px-4 lg:px-12">
+            <div class="rounded-lg lg:p-10 flex flex-col min-h-screen">
                 <FormGrid v-for="career_history in careerHistoriesList">
                     <div
                         class="bg-slate-50 dark:bg-slate-700 col-span-6 p-8 rounded-lg mt-10"
