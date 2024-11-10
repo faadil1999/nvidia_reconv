@@ -1,6 +1,6 @@
 from app.config import client
 
-# Fonction for sending the message
+# Function for sending the message
 def create_chat_completion(content):
     completion = client.chat.completions.create(
         model="meta/llama-3.1-405b-instruct",
@@ -12,7 +12,7 @@ def create_chat_completion(content):
     )
     return completion
 
-# Fonction pour récupérer la réponse
+# Function for receiving response
 def get_response_from_completion(completion):
     response = ""
     for chunk in completion:
