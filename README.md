@@ -1,66 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Professional Career Transition Platform(RECONVERTO)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Overview
 
-## About Laravel
+This platform provides a tailored approach to help individuals transition smoothly into new careers, leveraging their past experiences and acquired skills. Designed with a modern tech stack, it combines Laravel and Vue.js with Tailwind CSS on the frontend, and integrates Python with FastAPI on the backend to offer a seamless user experience. Utilizing advanced NVIDIA tools, it assesses career history and generates personalized skill-building pathways for effective and guided professional reconversion.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Key Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Personalized Transition Pathways**: Using NVIDIA technology, the platform analyzes past career data to recommend relevant skills and courses for transitioning into new roles.
+- **Step-by-Step Learning Journeys**: Each career pathway is broken into steps, each offering focused resources, key skills, and actionable tasks to progress efficiently.
+- **Data-Driven Recommendations**: Leveraging machine learning and historical data, the platform continuously adapts recommendations based on evolving job market demands.
+- **Seamless Integration of Python and Laravel**: A robust architecture that combines FastAPI’s performance with Laravel’s extensive features for a comprehensive development experience.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Technologies Used
 
-## Learning Laravel
+- **Frontend**: Vue.js, Tailwind CSS
+- **Backend**: Laravel, FastAPI
+- **Python**: Integrated with OpenAI, NVIDIA for data processing(NVIDIA NIM Microservices)
+- **DevOps**: Docker, Composer, npm
+- **Database**: Configurable for various database systems (e.g., MySQL, SQLite)
+  
+### Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP >= 8.2
+- Node.js >= 16
+- Composer
+- Python 3.x
+- Docker (optional, for containerized environment)
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Table of Contents
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the Application](#running-the-application)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation
 
-### Premium Partners
+This project requires **PHP ^8.2**, **Composer**, **Node.js**, and **Python ^3.**. Follow these steps to set up and install dependencies:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Step 1: Clone the Repository
 
-## Contributing
+```bash
+git clone <repository_url>
+cd <repository_folder>
+```
+### Step 2: Install Dependencies 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**PHP/Laravel**
+Use Composer to install Laravel dependencies:
 
-## Code of Conduct
+```bash
+composer install
+```
+**Node.js**
+Install JavaScript dependencies with npm:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+npm install
+```
+**Python FastAPI**
+It’s recommended to create a virtual environment for Python dependencies:
+run inside ..\pythonNVIDIA_NIM folder
+```bash
+python3 -m venv env
+source env/bin/activate  # For Linux/macOS
+env\Scripts\activate or  .\venv\Scripts\activate     # For Windows
+```
 
-## Security Vulnerabilities
+Install packages from requirements.txt:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+pip install -r requirements.txt
+```
 
-## License
+## Environment Variables
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Copy the Example Environment File**
+
+   To set up your environment variables, copy the `.env.example` file to `.env`:
+
+   ```bash
+   cp .env.example .env
+   ```
+2. **Generate an Application Key**
+
+This step is essential for the security of your Laravel application. Generate a new application key with:
+
+```bash
+php artisan key:generate
+```
+3. **Configure Database**
+
+    Open the .env file.
+
+    Update the DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD fields to match your database configuration.
+
+    If you’re using SQLite for development, you can set up the database by running:
+
+```bash
+touch database/database.sqlite
+```
+4. **Configure Python and FastAPI Environment**
+
+    In the .env file, add any required environment variables for FastAPI.
+
+```bash
+PYTHON_API_URL=python_api_url(generally: http://127.0.0.1:8000)
+NVIDIA_API_KEY=your_openai_key_here
+```
+
+### Running the Application
+
+Development Mode
+
+To start the application in development mode:
+
+Laravel (PHP):
+```bash
+php artisan serve
+```
+Frontend (Node.js + Vite):
+```bash
+npm run dev
+```
+Backend (Python + FastAPI):
+Locate your terminal inside ..\pythonNVIDIA_NIM then run
+```bash
+ python -m uvicorn app.main:app --reload
+```
