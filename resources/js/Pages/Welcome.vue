@@ -32,8 +32,8 @@ function handleImageError() {
     <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         <img
             id="background"
-            class="absolute -left-20 top-0 max-w-[877px] max-h-screen"
-            src="https://laravel.com/assets/img/welcome/background.svg"
+            class="absolute top-0 w-screen h-screen"
+            src="https://cdn.pixabay.com/photo/2022/02/25/09/38/career-path-7033830_1280.png"
         />
         <div
             class="relative flex max-h-screen flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white"
@@ -47,7 +47,9 @@ function handleImageError() {
                     >
                         <div class="w-full flex flex-col mx-auto">
                             <ApplicationLogo class="mx-auto" />
-                            <h1>Reconverto</h1>
+                            <h1 class="font-bold text-xl text-red-500">
+                                Reconverto
+                            </h1>
                         </div>
                     </div>
                     <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
