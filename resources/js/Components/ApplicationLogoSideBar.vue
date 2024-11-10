@@ -1,12 +1,13 @@
 <template>
-    <img :src="image_url" class="w-32 h-32" />
+    <img :src="image_url" class="w-36 h-36" />
 </template>
 
 <script setup>
 const props = defineProps({
     image_url: {
         type: String,
-        default: "",
+        default:
+            "http://nvidia_reconv.test/storage/images/logo_nvidia_reconv.png",
     },
 });
 </script>

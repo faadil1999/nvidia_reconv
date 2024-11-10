@@ -9,11 +9,11 @@
                             {{ $t("fields.career_name") }}
                         </template>
                         <template #input="inputProps">
-                            <Select
+                            <Multiselect3
                                 v-model="form.career_id"
-                                v-bind="inputProps"
+                                :searchable="true"
                                 :options="careerOptions"
-                            ></Select>
+                            />
                         </template>
                         <template #error v-if="form.errors?.career_id">
                             {{ form.errors.career_id }}
@@ -57,18 +57,19 @@
                     </FormInput>
                 </div>
                 <!--Skills-->
+
                 <div class="col-span-full">
                     <FormInput>
                         <template #label>
                             {{ $t("fields.skill.plural") }}
                         </template>
                         <template #input="inputProps">
-                            <Select
+                            <Multiselect3
                                 v-model="form.skills"
-                                v-bind="inputProps"
+                                mode="tags"
+                                :searchable="true"
                                 :options="skillOptions"
-                                multiple
-                            ></Select>
+                            />
                         </template>
                         <template #error v-if="form.errors?.skills">
                             {{ form.errors.skills }}
@@ -92,7 +93,7 @@
 import Modal from "../Modal.vue";
 import FormGrid from "@/Components/Form/FormGrid.vue";
 import FormInput from "@/Components/Form/FormInput.vue";
-import Select from "@/Components/Inputs/Select.vue";
+import Multiselect3 from "@vueform/multiselect";
 import { computed, ref, watch } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { SaveIcon } from "lucide-vue-next";
@@ -176,3 +177,4 @@ const submitForm = () => {
     }
 };
 </script>
+<style src="@vueform/multiselect/themes/default.css"></style>
